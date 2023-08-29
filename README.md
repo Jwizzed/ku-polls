@@ -7,9 +7,35 @@ https://cpske.github.io/ISP) course at Kasetsart University.
 
 ## Requirements
 - Requires Python 3.8+ and packages listed in [requirements.txt](./requirements.txt). 
+- You can also see in [Project wiki]
 
 ## Installation and Configuration
-- Follow the installation steps in the [Installation]
+1. Clone the repository
+   ```
+   git clone https://github.com/Jwizzed/ku-polls.git
+   ```
+2. Change directory into the repo
+   ```
+   cd ku-polls
+   ```
+3. Configure your settings in settings.ini or through environment variables. See settings.example.ini for reference.
+4. Run the setup script for your OS:
+   - Linux/Mac: ./setup-linux.sh
+   - Windows: ./setup-win.ps1
+5. Follow the prompts to complete installation.
+6. Activate the virtual environment:
+   ```
+   source .venv/bin/activate
+   ```
+7. Start the Django server
+   ```
+   python manage.py runserver
+   ```
+   or
+      ```
+   python3 manage.py runserver
+   ```
+   
 
 ## Running the Application
 1. Activate the virtual environment
@@ -55,4 +81,4 @@ Soon.
 
 
 [Django]: https://docs.djangoproject.com/en/3.1/intro/tutorial01/
-[Installation]: ../../wiki/Installation 
+[Project wiki]: ../../wiki 
