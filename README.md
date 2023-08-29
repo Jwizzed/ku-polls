@@ -74,7 +74,7 @@ Soon.
 - [Development Plan](https://github.com/Jwizzed/ku-polls/wiki/Development-Plan)
 
 ### Iterations
-- Iteration 1 [Plan](https://github.com/Jwizzed/ku-polls/wiki/Iteration-1-Plan) and [Project Board]()
+- Iteration 1 [Plan](https://github.com/Jwizzed/ku-polls/wiki/Iteration-1-Plan) and [Project Board](https://github.com/users/Jwizzed/projects/1)
 - Iteration 2 [Plan](https://github.com/Jwizzed/ku-polls/wiki/Iteration-2-Plan) and [Project Board]()
 - Iteration 3 [Plan](https://github.com/Jwizzed/ku-polls/wiki/Iteration-3-Plan) and [Project Board]()
 - Iteration 4 [Plan](https://github.com/Jwizzed/ku-polls/wiki/Iteration-4-Plan) and [Project Board]()
