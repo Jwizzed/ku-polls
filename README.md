@@ -55,4 +55,4 @@ Soon.
 
 
 [Django]: https://docs.djangoproject.com/en/3.1/intro/tutorial01/
-[Installation]: (../../wiki/Installation) 
+[Installation]: ../../wiki/Installation 
