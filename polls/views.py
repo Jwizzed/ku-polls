@@ -1,13 +1,17 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
-from django.views import generic
 from django.utils import timezone
-
+from django.views import generic
 from .models import Choice, Question
 
 
 class IndexView(generic.ListView):
+    """
+    The IndexView generic view uses a default template called <app name>/<model
+    name>_list.html; we use template_name to tell ListView to use our existing
+    "polls/index.html" template.
+    """
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
@@ -22,6 +26,11 @@ class IndexView(generic.ListView):
 
 
 class DetailView(generic.DetailView):
+    """
+    The DetailView generic view expects the primary key value captured from the
+    URL to be called "pk", so we've changed question_id to pk for the generic
+    views.
+    """
     model = Question
     template_name = 'polls/detail.html'
 
@@ -33,11 +42,23 @@ class DetailView(generic.DetailView):
 
 
 class ResultsView(generic.DetailView):
+    """
+    The ResultView generic view uses the template called polls/results.html
+    and the context variable is called question.
+    """
     model = Question
     template_name = 'polls/results.html'
 
 
 def vote(request, question_id):
+    """
+    This function handle voting for a particular choice in a particular
+    question.
+
+    :param request: request from user
+    :param question_id: id of question
+    :return: HttpResponseRedirect
+    """
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
@@ -50,7 +71,6 @@ def vote(request, question_id):
     else:
         selected_choice.votes += 1
         selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+        return HttpResponseRedirect(
+            reverse('polls:results', args=(question.id,)))
