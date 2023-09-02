@@ -19,7 +19,6 @@ class QuestionIndexViewTests(TestCase):
     """
     Test for QuestionIndexView
     """
-
     def test_no_questions(self):
         """
         If no questions exist, an appropriate message is displayed.
