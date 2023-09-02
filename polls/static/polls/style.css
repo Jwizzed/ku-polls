@@ -1,9 +1,11 @@
 /* Global Styles */
 
 body {
-  /*background: white url("images/background.png") no-repeat;*/
+  background: white url("images/background.png") no-repeat center center;
+  background-size: cover;
   font-family: Arial, sans-serif;
   color: #ffffff;
+  margin: 100px;
 }
 
 a {
@@ -45,10 +47,10 @@ li {
   margin-bottom: 10px;
 }
 
-li::before {
-  content: "• ";
-  color: #C23373;
-}
+/*li::before {*/
+/*  content: "• ";*/
+/*  color: #C23373;*/
+/*}*/
 
 /* Links */
 
