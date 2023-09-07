@@ -3,6 +3,13 @@
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
 <h1>{{ question.question_text }}</h1>
+{% if messages %}
+    <ul class="error_messages">
+        {% for message in messages %}
+        <li> {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
 <ul class="result-list">
   {% for choice in question.choice_set.all %}

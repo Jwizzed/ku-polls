@@ -1,18 +1,51 @@
-{% load static %}
+<!DOCTYPE html>
 
-<link rel="stylesheet" href="{% static 'polls/style.css' %}">
-<div class="polls">
-  {% if latest_question_list %}
-    <ul class="question-list">
-      {% for question in latest_question_list %}
-        <li>
-          <a class="question" href="{% url 'polls:detail' question.id %}">
-            {{ question.question_text }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p class="no-polls">No polls are available.</p>
-  {% endif %}
-</div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problems</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+    <div class="Problems">
+        <div class="container">
+            <h1 class="ku-polls">KU polls</h1>
+            {% if messages %}
+            <ul class="error_messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <div class="flex mt-4 border border-gray-500 p-4 scrollable-content">
+
+              {% if latest_question_list %}
+                    {% for question in latest_question_list %}
+                       <div class="card-item">
+                          <div class="card">
+                            <div class="card-content">
+                            <h2 class="card-title">{{ question.question_text }}</h2>
+                                {% if question.is_able_to_vote %}
+                                    <p>Status: ✅</p>
+                                {% else %}
+                                    <p>Status: ❌</p>
+                                {% endif %}
+                            <div class="card-actions">
+                             <a href="{% url 'polls:detail' question.id %}" target="_blank" rel="noopener noreferrer" class="view-button">Vote</a>
+                             <a href="{% url 'polls:results' question.id %}" target="_blank" rel="noopener noreferrer" class="view-button">View</a>
+                              </div>
+                            </div>
+                          </div>
+                       </div>
+                    {% endfor %}
+                {% else %}
+                  <p class="no-polls">No polls are available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
