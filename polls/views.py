@@ -1,6 +1,6 @@
 """This module contains polls app views."""
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
@@ -33,6 +33,7 @@ class DetailView(generic.DetailView):
     """
     model = Question
     template_name = "polls/detail.html"
+    object: Question
 
     def get_queryset(self):
         """Get questions that are already published.
@@ -49,13 +50,21 @@ class DetailView(generic.DetailView):
         :param kwargs: Keyword arguments
         :return: Rendered template with question details
         """
-        question = super().get_object()
-
-        if not question.can_vote():
-            messages.error(request, f"Poll number {question.id} is not available to vote")
+        try:
+            self.object = get_object_or_404(Question, pk=kwargs["pk"])
+        except Http404:
+            messages.error(request,
+                           f"Poll with ID {kwargs['pk']} does not exist.")
             return redirect("polls:index")
 
-        return render(request, self.template_name, {"question": question})
+        context = self.get_context_data(object=self.object)
+
+        if not self.object.can_vote():
+            messages.error(request,
+                           f"Poll {self.object} has ended and is not available for voting.")
+            return redirect("polls:index")
+
+        return self.render_to_response(context)
 
 
 class ResultsView(generic.DetailView):
@@ -66,6 +75,7 @@ class ResultsView(generic.DetailView):
     """
     model = Question
     template_name = "polls/results.html"
+    object: Question
 
     def get(self, request, *args, **kwargs):
         """Get the question object and render the template.
@@ -75,11 +85,21 @@ class ResultsView(generic.DetailView):
         :param kwargs: Keyword arguments
         :return: Rendered template with question's results
         """
-        question = super().get_object()
-        if not question.is_published():
-            messages.error(request, f"Poll number {question.id} results are not available.")
+        try:
+            self.object = get_object_or_404(Question, pk=kwargs["pk"])
+        except Http404:
+            messages.error(request,
+                           f"Poll number {kwargs['pk']} does not exists.")
             return redirect("polls:index")
-        return render(request, self.template_name, {"question": question})
+
+        if not self.object.is_published():
+            messages.error(request,
+                           f"Poll {self.object} results are not "
+                           f"available.")
+            return redirect("polls:index")
+        else:
+            return render(request, self.template_name, {"question": self.object})
+
 
 
 @login_required
