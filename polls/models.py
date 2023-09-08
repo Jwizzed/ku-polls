@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 from django.utils import timezone
+from django.db.models import Sum
 
 
 class Question(models.Model):
@@ -14,6 +15,28 @@ class Question(models.Model):
     end_date = models.DateTimeField(
         "Date closed", default=None, null=True, blank=True
     )
+    is_able_to_vote = models.BooleanField(default=True)
+
+    @property
+    def able_to_vote(self):
+        """
+        Check if voting is allowed for the question.
+
+        :return: True if the current time falls between the publication date
+                 and the end date (if specified). Otherwise, return False.
+        """
+        if self.end_date:
+            return self.is_published and timezone.now() <= self.end_date
+        return self.is_published
+
+    @property
+    def total_votes(self):
+        """
+        Calculate the total votes for all choices related to this question.
+
+        :return: Total votes count.
+        """
+        return self.choice_set.aggregate(Sum('votes'))['votes__sum'] or 0
 
     def __str__(self):
         """
@@ -51,6 +74,18 @@ class Question(models.Model):
             return self.pub_date <= now <= self.end_date
         else:
             return self.pub_date <= now
+
+    def save(self, *args, **kwargs):
+        """
+        Override the default save method to update the is_able_to_vote field
+        based on the current value of the able_to_vote property before saving
+        the instance to the database.
+
+        :param args: Variable length argument list.
+        :param kwargs: Arbitrary keyword arguments.
+        """
+        self.is_able_to_vote = self.able_to_vote
+        super(Question, self).save(*args, **kwargs)
 
 
 class Choice(models.Model):

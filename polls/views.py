@@ -7,6 +7,7 @@ from django.utils import timezone
 from django.contrib import messages
 from .models import Question, Choice
 from django.contrib.auth.decorators import login_required
+from django.db.models import Max
 
 
 class IndexView(generic.ListView):
@@ -22,7 +23,7 @@ class IndexView(generic.ListView):
 
         :return: Queryset of the latest 5 questions
         """
-        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
 
 
 class DetailView(generic.DetailView):
@@ -66,6 +67,40 @@ class DetailView(generic.DetailView):
 
         return self.render_to_response(context)
 
+#
+# class ResultsView(generic.DetailView):
+#     """View to display each question's result.
+#
+#     :param pk: Primary key of the question
+#     :return: Rendered template with question's results
+#     """
+#     model = Question
+#     template_name = "polls/results.html"
+#     object: Question
+#
+#     def get(self, request, *args, **kwargs):
+#         """Get the question object and render the template.
+#
+#         :param request: Django request object
+#         :param args: Arguments
+#         :param kwargs: Keyword arguments
+#         :return: Rendered template with question's results
+#         """
+#         try:
+#             self.object = get_object_or_404(Question, pk=kwargs["pk"])
+#         except Http404:
+#             messages.error(request,
+#                            f"Poll number {kwargs['pk']} does not exists.")
+#             return redirect("polls:index")
+#
+#         if not self.object.is_published():
+#             messages.error(request,
+#                            f"Poll {self.object} results are not "
+#                            f"available.")
+#             return redirect("polls:index")
+#         else:
+#             return render(request, self.template_name, {"question": self.object})
+
 
 class ResultsView(generic.DetailView):
     """View to display each question's result.
@@ -98,11 +133,14 @@ class ResultsView(generic.DetailView):
                            f"available.")
             return redirect("polls:index")
         else:
-            return render(request, self.template_name, {"question": self.object})
+            max_votes = self.object.choice_set.aggregate(max_votes=Max('votes'))['max_votes'] or 0
+            context = {
+                "question": self.object,
+                "max_votes": max_votes,
+            }
+            return render(request, self.template_name, context)
 
 
-
-@login_required
 def vote(request, question_id):
     """Process a vote on the detail view.
 
