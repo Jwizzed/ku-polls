@@ -1,23 +1,57 @@
 {% load static %}
+{% load polls_filters %}
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<h1>{{ question.question_text }}</h1>
-{% if messages %}
-    <ul class="error_messages">
-        {% for message in messages %}
-        <li> {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
+<div class="visualizer-container">
+    <div class="question-container">
+        <h1 class="question-title">{{ question.question_text }}</h1>
 
-<ul class="result-list">
-  {% for choice in question.choice_set.all %}
-    <li class="result-item">
-      <span class="choice">{{ choice.choice_text }}</span>
-      <span class="vote-count">-- {{ choice.votes }} vote{{ choice.votes|pluralize }}</span>
-    </li>
-  {% endfor %}
-</ul>
+        {% if messages %}
+            <ul class="error_messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
-<a class="vote-again" href="{% url 'polls:detail' question.id %}">Vote again?</a>
+        <div class="results-section">
+            <ul class="result-list">
+                {% for choice in question.choice_set.all %}
+                    {% with percentage=choice.votes|div:max_votes|mul:100 %}
+                    <li class="result-item">
+                        <span class="choice">{{ choice.choice_text }}</span>
+                        <div class="vote-bar" style="width: {{ percentage }}%; max-width: 80%;"></div>
+                        <span class="vote-count">{{ choice.votes }}</span>
+                    </li>
+                    {% endwith %}
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="action-section">
+            <a class="vote-again" href="{% url 'polls:index' %}">Back</a>
+        </div>
+    </div>
+
+   <div class="charts-container">
+
+        <div class="pie-container">
+            <canvas id="resultsChart"
+                data-labels="{% for choice in question.choice_set.all %}{{ choice.choice_text }}{% if not forloop.last %},{% endif %}{% endfor %}"
+                data-votes="{% for choice in question.choice_set.all %}{{ choice.votes }}{% if not forloop.last %},{% endif %}{% endfor %}">
+            </canvas>
+        </div>
+
+        <div class="radar-container">
+            <canvas id="radarChart"
+                data-labels="{% for choice in question.choice_set.all %}{{ choice.choice_text }}{% if not forloop.last %},{% endif %}{% endfor %}"
+                data-votes="{% for choice in question.choice_set.all %}{{ choice.votes }}{% if not forloop.last %},{% endif %}{% endfor %}">
+            </canvas>
+        </div>
+
+    </div>
+</div>
+
+<script src="{% static 'polls/js/resultsChart.js' %}"></script>

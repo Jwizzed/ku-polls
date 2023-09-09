@@ -29,13 +29,15 @@
                             <div class="card-content">
                             <h2 class="card-title">{{ question.question_text }}</h2>
                                 {% if question.is_able_to_vote %}
-                                    <p>Status: ✅</p>
+                                    <p>Status: 🗳️</p>
                                 {% else %}
-                                    <p>Status: ❌</p>
+                                    <p>Status: 🚫</p>
                                 {% endif %}
+
+                                <p>Total Vote:<em class="total-vote"> {{question.total_votes}} </em></p>
                             <div class="card-actions">
-                             <a href="{% url 'polls:detail' question.id %}" target="_blank" rel="noopener noreferrer" class="view-button">Vote</a>
-                             <a href="{% url 'polls:results' question.id %}" target="_blank" rel="noopener noreferrer" class="view-button">View</a>
+                             <a href="{% url 'polls:detail' question.id %}" class="view-button">Vote</a>
+                             <a href="{% url 'polls:results' question.id %}" class="view-button">View</a>
                               </div>
                             </div>
                           </div>

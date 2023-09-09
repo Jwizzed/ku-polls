@@ -15,7 +15,7 @@
               <li> {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
               {% endfor %}
           </ul>
-            {% endif %}
+        {% endif %}
     </legend>
 
     {% if error_message %}
@@ -32,5 +32,7 @@
   </fieldset>
 
   <input type="submit" value="Vote" class="vote-button">
+
+  <a class="detail-back" href="{% url 'polls:index' %}">Back</a>
 
 </form>
