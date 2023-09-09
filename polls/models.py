@@ -18,18 +18,6 @@ class Question(models.Model):
     is_able_to_vote = models.BooleanField(default=True)
 
     @property
-    def able_to_vote(self):
-        """
-        Check if voting is allowed for the question.
-
-        :return: True if the current time falls between the publication date
-                 and the end date (if specified). Otherwise, return False.
-        """
-        if self.end_date:
-            return self.is_published and timezone.now() <= self.end_date
-        return self.is_published
-
-    @property
     def total_votes(self):
         """
         Calculate the total votes for all choices related to this question.
@@ -84,7 +72,7 @@ class Question(models.Model):
         :param args: Variable length argument list.
         :param kwargs: Arbitrary keyword arguments.
         """
-        self.is_able_to_vote = self.able_to_vote
+        self.is_able_to_vote = self.can_vote()
         super(Question, self).save(*args, **kwargs)
 
 
