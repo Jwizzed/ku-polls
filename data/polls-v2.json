@@ -1,0 +1,802 @@
+[
+{
+  "model": "polls.question",
+  "pk": 1,
+  "fields": {
+    "question_text": "What is your favorite type of cuisine?",
+    "pub_date": "2023-09-07T03:18:16Z",
+    "end_date": null,
+    "is_able_to_vote": true
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 2,
+  "fields": {
+    "question_text": "Which superpower would you want to have?",
+    "pub_date": "2023-08-31T06:30:08Z",
+    "end_date": "2023-09-07T10:09:50Z",
+    "is_able_to_vote": false
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 3,
+  "fields": {
+    "question_text": "What's your favorite social media platform?",
+    "pub_date": "2023-08-31T06:54:18.282Z",
+    "end_date": null,
+    "is_able_to_vote": true
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 4,
+  "fields": {
+    "question_text": "Which streaming service do you use the most?",
+    "pub_date": "2023-08-31T06:54:49.302Z",
+    "end_date": null,
+    "is_able_to_vote": true
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 5,
+  "fields": {
+    "question_text": "What's your favorite holiday?",
+    "pub_date": "2023-08-31T06:55:44.943Z",
+    "end_date": null,
+    "is_able_to_vote": true
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 6,
+  "fields": {
+    "question_text": "What's your favorite social media platform?",
+    "pub_date": "2023-08-31T06:56:39.393Z",
+    "end_date": null,
+    "is_able_to_vote": true
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 7,
+  "fields": {
+    "question_text": "What's your go-to coffee order?",
+    "pub_date": "2023-08-31T06:56:54Z",
+    "end_date": "2023-09-06T13:57:15Z",
+    "is_able_to_vote": false
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 8,
+  "fields": {
+    "question_text": "Which movie genre is your favorite?",
+    "pub_date": "2023-08-31T06:57:08Z",
+    "end_date": "2023-09-06T08:25:03Z",
+    "is_able_to_vote": false
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 4,
+  "fields": {
+    "question": 2,
+    "choice_text": "Flying",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 5,
+  "fields": {
+    "question": 2,
+    "choice_text": "Super strength",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 6,
+  "fields": {
+    "question": 2,
+    "choice_text": "Teleportation",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 7,
+  "fields": {
+    "question": 2,
+    "choice_text": "Time travel",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 8,
+  "fields": {
+    "question": 2,
+    "choice_text": "Mind reading",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 9,
+  "fields": {
+    "question": 2,
+    "choice_text": "Shape shifting",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 10,
+  "fields": {
+    "question": 2,
+    "choice_text": "Invisibility",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 11,
+  "fields": {
+    "question": 2,
+    "choice_text": "Telekinesis",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 12,
+  "fields": {
+    "question": 2,
+    "choice_text": "Weather control",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 13,
+  "fields": {
+    "question": 2,
+    "choice_text": "Super speed",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 14,
+  "fields": {
+    "question": 3,
+    "choice_text": "Facebook",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 15,
+  "fields": {
+    "question": 3,
+    "choice_text": "Instagram",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 16,
+  "fields": {
+    "question": 3,
+    "choice_text": "TikTok",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 17,
+  "fields": {
+    "question": 3,
+    "choice_text": "Twitter",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 18,
+  "fields": {
+    "question": 3,
+    "choice_text": "Snapchat",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 19,
+  "fields": {
+    "question": 3,
+    "choice_text": "YouTube",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 20,
+  "fields": {
+    "question": 3,
+    "choice_text": "Reddit",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 21,
+  "fields": {
+    "question": 3,
+    "choice_text": "Pinterest",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 22,
+  "fields": {
+    "question": 3,
+    "choice_text": "LinkedIn",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 23,
+  "fields": {
+    "question": 3,
+    "choice_text": "WhatsApp",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 24,
+  "fields": {
+    "question": 4,
+    "choice_text": "Netflix",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 25,
+  "fields": {
+    "question": 4,
+    "choice_text": "Hulu",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 26,
+  "fields": {
+    "question": 4,
+    "choice_text": "Amazon Prime",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 27,
+  "fields": {
+    "question": 4,
+    "choice_text": "Disney+",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 28,
+  "fields": {
+    "question": 4,
+    "choice_text": "HBO Max",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 29,
+  "fields": {
+    "question": 4,
+    "choice_text": "Apple TV+",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 30,
+  "fields": {
+    "question": 4,
+    "choice_text": "Peacock",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 31,
+  "fields": {
+    "question": 4,
+    "choice_text": "Paramount+",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 32,
+  "fields": {
+    "question": 4,
+    "choice_text": "Discovery+",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 33,
+  "fields": {
+    "question": 4,
+    "choice_text": "YouTube",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 34,
+  "fields": {
+    "question": 5,
+    "choice_text": "Christmas",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 35,
+  "fields": {
+    "question": 5,
+    "choice_text": "Halloween",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 36,
+  "fields": {
+    "question": 5,
+    "choice_text": "Thanksgiving",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 37,
+  "fields": {
+    "question": 5,
+    "choice_text": "Fourth of July",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 38,
+  "fields": {
+    "question": 5,
+    "choice_text": "Valentine's Day",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 39,
+  "fields": {
+    "question": 5,
+    "choice_text": "Easter",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 40,
+  "fields": {
+    "question": 5,
+    "choice_text": "St. Patrick's Day",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 41,
+  "fields": {
+    "question": 5,
+    "choice_text": "New Year's Eve",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 42,
+  "fields": {
+    "question": 5,
+    "choice_text": "Your birthday",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 43,
+  "fields": {
+    "question": 5,
+    "choice_text": "Labor Day",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 44,
+  "fields": {
+    "question": 6,
+    "choice_text": "Facebook",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 45,
+  "fields": {
+    "question": 6,
+    "choice_text": "Instagram",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 46,
+  "fields": {
+    "question": 6,
+    "choice_text": "TikTok",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 47,
+  "fields": {
+    "question": 6,
+    "choice_text": "Twitter",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 48,
+  "fields": {
+    "question": 6,
+    "choice_text": "Snapchat",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 49,
+  "fields": {
+    "question": 6,
+    "choice_text": "YouTube",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 50,
+  "fields": {
+    "question": 6,
+    "choice_text": "Reddit",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 51,
+  "fields": {
+    "question": 6,
+    "choice_text": "Pinterest",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 52,
+  "fields": {
+    "question": 6,
+    "choice_text": "LinkedIn",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 53,
+  "fields": {
+    "question": 6,
+    "choice_text": "WhatsApp",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 54,
+  "fields": {
+    "question": 7,
+    "choice_text": "Black coffee",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 55,
+  "fields": {
+    "question": 7,
+    "choice_text": "Latte",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 56,
+  "fields": {
+    "question": 7,
+    "choice_text": "Cappuccino",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 57,
+  "fields": {
+    "question": 7,
+    "choice_text": "Americano",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 58,
+  "fields": {
+    "question": 7,
+    "choice_text": "Espresso",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 59,
+  "fields": {
+    "question": 7,
+    "choice_text": "Cold brew",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 60,
+  "fields": {
+    "question": 7,
+    "choice_text": "Frappuccino",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 61,
+  "fields": {
+    "question": 7,
+    "choice_text": "Macchiato",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 62,
+  "fields": {
+    "question": 7,
+    "choice_text": "Mocha",
+    "votes": 2
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 63,
+  "fields": {
+    "question": 7,
+    "choice_text": "Flat white",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 64,
+  "fields": {
+    "question": 8,
+    "choice_text": "Comedy",
+    "votes": 12
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 65,
+  "fields": {
+    "question": 8,
+    "choice_text": "Action",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 66,
+  "fields": {
+    "question": 8,
+    "choice_text": "Drama",
+    "votes": 3
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 67,
+  "fields": {
+    "question": 8,
+    "choice_text": "Horror",
+    "votes": 2
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 68,
+  "fields": {
+    "question": 8,
+    "choice_text": "Romance",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 69,
+  "fields": {
+    "question": 8,
+    "choice_text": "Sci-fi",
+    "votes": 3
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 70,
+  "fields": {
+    "question": 8,
+    "choice_text": "Documentary",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 71,
+  "fields": {
+    "question": 8,
+    "choice_text": "Thriller",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 72,
+  "fields": {
+    "question": 8,
+    "choice_text": "Animation",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 73,
+  "fields": {
+    "question": 8,
+    "choice_text": "Fantasy",
+    "votes": 7
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 74,
+  "fields": {
+    "question": 1,
+    "choice_text": "Italian",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 75,
+  "fields": {
+    "question": 1,
+    "choice_text": "Chinese",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 76,
+  "fields": {
+    "question": 1,
+    "choice_text": "Mexican",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 77,
+  "fields": {
+    "question": 1,
+    "choice_text": "Indian",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 78,
+  "fields": {
+    "question": 1,
+    "choice_text": "Mediterranean",
+    "votes": 4
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 79,
+  "fields": {
+    "question": 1,
+    "choice_text": "American",
+    "votes": 9
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 80,
+  "fields": {
+    "question": 1,
+    "choice_text": "Japanese",
+    "votes": 4
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 81,
+  "fields": {
+    "question": 1,
+    "choice_text": "Thai",
+    "votes": 14
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 82,
+  "fields": {
+    "question": 1,
+    "choice_text": "French",
+    "votes": 4
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 83,
+  "fields": {
+    "question": 1,
+    "choice_text": "Greek",
+    "votes": 3
+  }
+}
+]
