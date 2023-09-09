@@ -1,5 +1,6 @@
 # KU polls
-
+[![Django CI](https://github.com/Jwizzed/ku-polls/actions/workflows/django.yml/badge.svg)](https://github.com/Jwizzed/ku-polls/actions/workflows/django.yml)
+<hr>
 The application is built using Python and the [Django] web framework. It allows creating polls with multiple choice questions that users can vote on.
 
 This app was created as part of the [Individual Software Process](
