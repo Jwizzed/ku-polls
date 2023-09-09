@@ -86,7 +86,8 @@ class CanVoteTest(TestCase):
 
     def test_past_question_with_past_end_date(self):
         """
-        A question with both publication and end dates in the past does not allow voting.
+        A question with both publication and end dates in the past does
+        not allow voting.
         """
         question = create_question("Past question with past end date.",
                                    pub_days=-10, end_days=-5)
