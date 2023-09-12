@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import Question, Choice
 from django.db.models import Max
 
@@ -109,6 +110,7 @@ class ResultsView(generic.DetailView):
             return render(request, self.template_name, context)
 
 
+@login_required
 def vote(request, question_id):
     """Process a vote on the detail view.
 
