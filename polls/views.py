@@ -6,7 +6,7 @@ from django.views import generic
 from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Question, Choice
+from .models import Question, Choice, Vote
 from django.db.models import Max
 
 
@@ -101,8 +101,7 @@ class ResultsView(generic.DetailView):
                            f"available.")
             return redirect("polls:index")
         else:
-            max_votes = self.object.choice_set.aggregate(
-                max_votes=Max('votes'))['max_votes'] or 0
+            max_votes = 30
             context = {
                 "question": self.object,
                 "max_votes": max_votes,
@@ -132,7 +131,17 @@ def vote(request, question_id):
             "question": question,
             "error_message": "Please select a choice!",
         })
-    selected_choice.votes += 1
-    selected_choice.save()
+
+    this_user = request.user
+    try:
+        # find a vote for this user and this question
+        vote = Vote.objects.get(user=this_user, choice__question=question)
+        # update his vote
+        vote.choice = selected_choice
+    except Vote.DoesNotExist:
+        # if there is no vote, create one
+        vote = Vote(user=this_user, choice=selected_choice)
+    vote.save()
+    messages.success(request, f"Your vote for {question} has been recorded.")
     return HttpResponseRedirect(reverse("polls:results",
                                         args=(question.id,)))

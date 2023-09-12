@@ -13,7 +13,6 @@
     <div class="Problems">
         <div class="container">
             {% if user.is_authenticated %}
-            <p>Welcome back, {{user.username}}</p>
             {% else %}
                 Please <a href="{% url 'login' %}">log in</a> to vote.
             {% endif %}
