@@ -12,6 +12,11 @@
 <body>
     <div class="Problems">
         <div class="container">
+            {% if user.is_authenticated %}
+            <p>Welcome back, {{user.username}}</p>
+            {% else %}
+                Please <a href="{% url 'login' %}">log in</a> to vote.
+            {% endif %}
             <h1 class="ku-polls">KU polls</h1>
             {% if messages %}
             <ul class="error_messages">
@@ -33,11 +38,10 @@
                                 {% else %}
                                     <p>Status: 🚫</p>
                                 {% endif %}
-
                                 <p>Total Vote:<em class="total-vote"> {{question.total_votes}} </em></p>
-                            <div class="card-actions">
-                             <a href="{% url 'polls:detail' question.id %}" class="view-button">Vote</a>
-                             <a href="{% url 'polls:results' question.id %}" class="view-button">View</a>
+                                <div class="card-actions">
+                                 <a href="{% url 'polls:detail' question.id %}" class="view-button">Vote</a>
+                                 <a href="{% url 'polls:results' question.id %}" class="view-button">View</a>
                               </div>
                             </div>
                           </div>
