@@ -2,7 +2,6 @@ import datetime
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
-from django.db.models import Sum
 
 
 class Question(models.Model):
@@ -16,7 +15,6 @@ class Question(models.Model):
     end_date = models.DateTimeField(
         "Date closed", default=None, null=True, blank=True
     )
-    is_able_to_vote = models.BooleanField(default=True)
 
     @property
     def total_votes(self):
@@ -64,18 +62,6 @@ class Question(models.Model):
         else:
             return self.pub_date <= now
 
-    def save(self, *args, **kwargs):
-        """
-        Override the default save method to update the is_able_to_vote field
-        based on the current value of the able_to_vote property before saving
-        the instance to the database.
-
-        :param args: Variable length argument list.
-        :param kwargs: Arbitrary keyword arguments.
-        """
-        self.is_able_to_vote = self.can_vote()
-        super(Question, self).save(*args, **kwargs)
-
 
 class Choice(models.Model):
     """
@@ -106,3 +92,4 @@ class Vote(models.Model):
     """Records a Vote of a Choice by a User."""
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
