@@ -221,18 +221,21 @@ em.total-vote{
     color: #333;
 }
 
-.error_messages {
-    background-color: #ffe0e0;
+.messages_container {
     padding: 10px;
-    border: 1px solid #ffcccc;
+    border: 1px solid #ccc;
     border-radius: 5px;
     list-style-type: none;
 }
-
+.success_message li {
+    color: #008800;
+    margin-bottom: 5px;
+}
 .error_messages li {
     color: #cc0000;
     margin-bottom: 5px;
 }
+
 
 .results-section {
     margin-top: 20px;

@@ -18,11 +18,15 @@
             {% endif %}
             <h1 class="ku-polls">KU polls</h1>
             {% if messages %}
-            <ul class="error_messages">
-                {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
+            <ul class="messages_container">
+            {% for message in messages %}
+                {% if message.tags == "success" %}
+                    <li class="success_message">{{ message }}</li>
+                {% elif message.tags == "error" %}
+                    <li class="error_message">{{ message }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
             {% endif %}
             <div class="flex mt-4 border border-gray-500 p-4 scrollable-content">
 
