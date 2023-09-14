@@ -7,7 +7,6 @@ from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Question, Choice, Vote
-from django.db.models import Max
 
 
 class IndexView(generic.ListView):
@@ -134,12 +133,9 @@ def vote(request, question_id):
 
     this_user = request.user
     try:
-        # find a vote for this user and this question
         vote = Vote.objects.get(user=this_user, choice__question=question)
-        # update his vote
         vote.choice = selected_choice
     except Vote.DoesNotExist:
-        # if there is no vote, create one
         vote = Vote(user=this_user, choice=selected_choice)
     vote.save()
     messages.success(request, f"Your vote for {question} has been recorded.")

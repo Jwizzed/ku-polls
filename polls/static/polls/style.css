@@ -227,15 +227,20 @@ em.total-vote{
     border-radius: 5px;
     list-style-type: none;
 }
-.success_message li {
-    color: #008800;
-    margin-bottom: 5px;
-}
+
 .error_messages li {
     color: #cc0000;
     margin-bottom: 5px;
 }
+.success_message li {
+    color: #008800;
+    margin-bottom: 5px;
+}
 
+ul.messages_container li.success_message {
+    color: #008800;
+    margin-bottom: 5px;
+}
 
 .results-section {
     margin-top: 20px;
@@ -361,4 +366,44 @@ em.total-vote{
     bottom: 0;
     width: 100%;
     height: 100%;
+}
+
+/* nav */
+.topnav {
+    background: rgba(0, 51, 102, 1);
+    overflow: hidden;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.topnav a:hover {
+    background: rgba(0, 51, 102, 1);
+}
+
+.topnav a.active {
+    background: rgba(0, 51, 102, 1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.topnav a.active:hover {
+    background-color: black;
+}
+
+.topnav p {
+    float: right;
+    color: white;
+    padding: 14px 16px;
+    margin: 0;
+    font-weight: bold;
 }
