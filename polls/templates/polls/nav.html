@@ -1,15 +1,15 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 <div class="topnav">
-  <a class="active" href="#home">Home</a>
+  <a class="active" href="{% url 'polls:index' %}">Home</a>
   {% if user.is_authenticated %}
       <p> Status: User</p>
-      <a class="active" href="#logout">Log Out</a>
+      <a class="active" href="{% url 'logout' %}">Log Out</a>
 
   {% else %}
       <p> Status: Visitor</p>
-      <a class="active" href="#signin">Sign In</a>
-      <a class="active" href="#signup">Sign Up</a>
+      <a class="active" href="{% url 'login' %}">Sign In</a>
+      <a class="active" href="{% url 'signup' %}">Sign Up</a>
   {% endif %}
   </div>
 {% block content %}{% endblock %}

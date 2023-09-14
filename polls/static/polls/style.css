@@ -407,3 +407,75 @@ ul.messages_container li.success_message {
     margin: 0;
     font-weight: bold;
 }
+
+
+.login-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 8px 8px 15px #aaa, -8px -8px 15px #fff;
+    width: 350px;
+    text-align: center;
+    margin: 5em auto;
+}
+
+.login-title {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-weight: bold; /* Bold title */
+}
+
+.input-group {
+    margin-bottom: 1.5rem; /* Increased margin for better spacing */
+}
+
+.input-group p {
+    color: red; /* Color for error messages */
+    font-size: 0.8rem; /* Font size for error messages */
+}
+
+.custom-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: bold; /* Bold labels */
+}
+
+.custom-form input[type="text"], .custom-form input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 4px 4px 6px #aaa, -4px -4px 6px #fff;
+    outline: none;
+}
+
+.custom-form .custom-button {
+    background-color: #007BFF;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 4px 4px 6px #aaa, -4px -4px 6px #fff;
+    width: 100%;
+    text-decoration: None;
+}
+
+.custom-form .custom-button:hover {
+    background-color: #0056b3;
+}
+
+.help-text {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-left: 19em;
+    width: 30em;
+    background-color: #0056b3;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+}

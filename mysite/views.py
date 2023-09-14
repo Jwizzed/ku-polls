@@ -13,7 +13,7 @@ def signup(request):
             raw_passwd = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_passwd)
             login(request, user)
-        return redirect('polls:index')
+            return redirect('polls:index')
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
