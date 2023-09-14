@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-<h2>Login</h2>
-<form method="POST">
-   {% csrf_token %}
-  {{ form.as_p }}
-  <p>
-  <button type="submit">Login</button>
-  </p>
-  <input type="hidden" name="next" value="{{next}}"/>
-</form>
-</body>
-</html>
+{% load static %}
+<link rel="stylesheet" href="{% static 'polls/loginStyle.css' %}">
+
+<div class="login-card">
+    <h2 class="login-title">Login</h2>
+    <form method="POST" class="custom-form">
+        {% csrf_token %}
+        <div class="input-group">
+            {{ form.username.label_tag }} {{ form.username }}
+        </div>
+        <div class="input-group">
+            {{ form.password.label_tag }} {{ form.password }}
+        </div>
+        <button type="submit" class="custom-button">Login</button>
+        <input type="hidden" name="next" value="{{next}}" />
+    </form>
+</div>
