@@ -23,11 +23,16 @@
     {% endif %}
 
     {% for choice in question.choice_set.all %}
-      <label class="poll-choice">
+    <label class="poll-choice">
+      {% if user_vote and choice.id == user_vote.id %}
+        <input type="radio" checked="true" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+      {% else %}
         <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-        {{ choice.choice_text }}
-      </label>
-    {% endfor %}
+      {% endif %}
+      {{ choice.choice_text }}
+    </label>
+  {% endfor %}
+
 
   </fieldset>
 

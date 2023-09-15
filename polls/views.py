@@ -58,7 +58,13 @@ class DetailView(generic.DetailView):
                            f"Poll with ID {kwargs['pk']} does not exist.")
             return redirect("polls:index")
 
-        context = self.get_context_data(object=self.object)
+        try:
+            user_vote = self.object.choice_set.filter(
+                vote__user=request.user).last()
+        except TypeError:
+            user_vote = None
+
+        context = self.get_context_data(object=self.object, user_vote=user_vote)
 
         if not self.object.can_vote():
             messages.error(request,
