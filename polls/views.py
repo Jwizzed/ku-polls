@@ -133,11 +133,11 @@ def vote(request, question_id):
 
     this_user = request.user
     try:
-        vote = Vote.objects.get(user=this_user, choice__question=question)
-        vote.choice = selected_choice
+        curr_vote = Vote.objects.get(user=this_user, choice__question=question)
+        curr_vote.choice = selected_choice
     except Vote.DoesNotExist:
-        vote = Vote(user=this_user, choice=selected_choice)
-    vote.save()
+        curr_vote = Vote(user=this_user, choice=selected_choice)
+    curr_vote.save()
     messages.success(request, f"Your vote for {question} has been recorded.")
     return HttpResponseRedirect(reverse("polls:results",
                                         args=(question.id,)))
