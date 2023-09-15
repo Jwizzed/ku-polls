@@ -64,7 +64,8 @@ class DetailView(generic.DetailView):
         except TypeError:
             user_vote = None
 
-        context = self.get_context_data(object=self.object, user_vote=user_vote)
+        context = self.get_context_data(object=self.object,
+                                        user_vote=user_vote)
 
         if not self.object.can_vote():
             messages.error(request,
@@ -95,6 +96,7 @@ class ResultsView(generic.DetailView):
         """
         try:
             self.object = get_object_or_404(Question, pk=kwargs["pk"])
+
         except Http404:
             messages.error(request,
                            f"Poll number {kwargs['pk']} does not exists.")
@@ -105,6 +107,7 @@ class ResultsView(generic.DetailView):
                            f"Poll {self.object} results are not "
                            f"available.")
             return redirect("polls:index")
+
         else:
             max_votes = 30
             context = {

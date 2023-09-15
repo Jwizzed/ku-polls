@@ -11,7 +11,7 @@ class Question(models.Model):
     :param models.Model: A class that represent a table in database.
     """
     question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('Date published', auto_now_add=False)
+    pub_date = models.DateTimeField('Date published', default=timezone.now)
     end_date = models.DateTimeField(
         "Date closed", default=None, null=True, blank=True
     )
