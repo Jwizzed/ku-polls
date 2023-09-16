@@ -16,11 +16,11 @@ https://cpske.github.io/ISP) course at Kasetsart University.
 
    For Linux/MacOS:
    ```
-   wget https://path-to-your-repo/setup-linux.sh
+   wget https://github.com/Jwizzed/ku-polls/blob/main/setup-linux.sh
    ```
    For Windows:
    ```
-   curl -O https://path-to-your-repo/setup-win.bat
+   curl -O https://github.com/Jwizzed/ku-polls/blob/main/setup-win.bat
    ```
 2. Execute the setup script
 
