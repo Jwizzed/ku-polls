@@ -12,15 +12,10 @@ https://cpske.github.io/ISP) course at Kasetsart University.
 
 ## Installation and Configuration
 ### Using setup script
-1. Download setup script
-
-   For Linux/MacOS:
+1. Clone the repository and change directory into the repo
    ```
-   wget https://github.com/Jwizzed/ku-polls/blob/main/setup-linux.sh
-   ```
-   For Windows:
-   ```
-   curl -O https://github.com/Jwizzed/ku-polls/blob/main/setup-win.bat
+   git clone https://github.com/Jwizzed/ku-polls.git
+   cd ku-polls
    ```
 2. Execute the setup script
 
