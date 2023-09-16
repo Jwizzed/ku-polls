@@ -1,10 +1,9 @@
 """Tests of authentication."""
 import django.test
-from django.urls import reverse
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
-from polls.models import Question, Choice
+from django.urls import reverse
 from mysite import settings
+from polls.models import Question, Choice
 
 
 class UserAuthTest(django.test.TestCase):
@@ -15,14 +14,14 @@ class UserAuthTest(django.test.TestCase):
         self.username = "testuser"
         self.password = "FatChance!"
         self.user1 = User.objects.create_user(
-                         username=self.username,
-                         password=self.password,
-                         )
+            username=self.username,
+            password=self.password,
+        )
         self.user1.first_name = "Tester"
         self.user1.save()
         q = Question.objects.create(question_text="First Poll Question")
         q.save()
-        for n in range(1,4):
+        for n in range(1, 4):
             choice = Choice(choice_text=f"Choice {n}", question=q)
             choice.save()
         self.question = q
@@ -37,13 +36,12 @@ class UserAuthTest(django.test.TestCase):
         """
         logout_url = reverse("logout")
         self.assertTrue(
-              self.client.login(username=self.username, password=self.password)
-                       )
+            self.client.login(username=self.username, password=self.password)
+        )
         # visit the logout page
         response = self.client.get(logout_url)
         self.assertEqual(302, response.status_code)
         self.assertRedirects(response, reverse(settings.LOGOUT_REDIRECT_URL))
-
 
     def test_login_view(self):
         """A user can login using the login view."""
@@ -52,11 +50,10 @@ class UserAuthTest(django.test.TestCase):
         self.assertEqual(200, response.status_code)
         form_data = {"username": "testuser",
                      "password": "FatChance!"
-                    }
+                     }
         response = self.client.post(login_url, form_data)
         self.assertEqual(302, response.status_code)
         self.assertRedirects(response, reverse(settings.LOGIN_REDIRECT_URL))
-
 
     def test_auth_required_to_vote(self):
         """Authentication is required to submit a vote.
