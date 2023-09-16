@@ -135,8 +135,7 @@ def vote(request, question_id):
     if not question.can_vote():
         messages.error(request, f"Poll number {question.id} "
                                 f"is not available to vote")
-        logger.warning(f"{this_user} failed to vote for {question}"
-                          f" from {ip}")
+        logger.warning(f"{this_user} failed to vote for {question} from {ip}")
         return redirect("polls:index")
 
     try:
