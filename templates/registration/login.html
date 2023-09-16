@@ -1,0 +1,36 @@
+{% extends 'polls/nav.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+
+{% if form.non_field_errors %}
+<div class="error-messages">
+    {% for error in form.non_field_errors %}
+    <div class="error">{{ error }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="login-card">
+    <h2 class="login-title">Login</h2>
+    <form method="POST" class="custom-form">
+        {% csrf_token %}
+
+        <div class="input-group">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div>
+
+        <div class="input-group">
+            {{ form.password.label_tag }}
+            {{ form.password }}
+
+        </div>
+
+        <button type="submit" class="custom-button">Login</button>
+        <a href="{% url 'polls:index' %}" class="custom-button">Enter as a visitor</a>
+        <input type="hidden" name="next" value="{{next}}" />
+    </form>
+</div>
+
+{% endblock %}

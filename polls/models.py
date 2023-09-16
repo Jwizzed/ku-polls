@@ -1,7 +1,7 @@
 import datetime
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
-from django.db.models import Sum
 
 
 class Question(models.Model):
@@ -11,11 +11,10 @@ class Question(models.Model):
     :param models.Model: A class that represent a table in database.
     """
     question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('Date published', auto_now_add=False)
+    pub_date = models.DateTimeField('Date published', default=timezone.now)
     end_date = models.DateTimeField(
         "Date closed", default=None, null=True, blank=True
     )
-    is_able_to_vote = models.BooleanField(default=True)
 
     @property
     def total_votes(self):
@@ -24,7 +23,7 @@ class Question(models.Model):
 
         :return: Total votes count.
         """
-        return self.choice_set.aggregate(Sum('votes'))['votes__sum'] or 0
+        return Vote.objects.filter(choice__question=self).count()
 
     def __str__(self):
         """
@@ -63,18 +62,6 @@ class Question(models.Model):
         else:
             return self.pub_date <= now
 
-    def save(self, *args, **kwargs):
-        """
-        Override the default save method to update the is_able_to_vote field
-        based on the current value of the able_to_vote property before saving
-        the instance to the database.
-
-        :param args: Variable length argument list.
-        :param kwargs: Arbitrary keyword arguments.
-        """
-        self.is_able_to_vote = self.can_vote()
-        super(Question, self).save(*args, **kwargs)
-
 
 class Choice(models.Model):
     """
@@ -84,10 +71,24 @@ class Choice(models.Model):
     """
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
+
+    @property
+    def votes(self):
+        """
+        Count the votes for this choice.
+
+        :return: The number of votes for this choice.
+        """
+        return self.vote_set.count()
 
     def __str__(self):
         """
         :return: The choice text
         """
         return self.choice_text
+
+
+class Vote(models.Model):
+    """Records a Vote of a Choice by a User."""
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)

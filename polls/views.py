@@ -5,8 +5,9 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.contrib import messages
-from .models import Question, Choice
-from django.db.models import Max
+from django.contrib.auth.decorators import login_required
+from .models import Question, Choice, Vote
+import logging
 
 
 class IndexView(generic.ListView):
@@ -58,7 +59,14 @@ class DetailView(generic.DetailView):
                            f"Poll with ID {kwargs['pk']} does not exist.")
             return redirect("polls:index")
 
-        context = self.get_context_data(object=self.object)
+        try:
+            user_vote = self.object.choice_set.filter(
+                vote__user=request.user).last()
+        except TypeError:
+            user_vote = None
+
+        context = self.get_context_data(object=self.object,
+                                        user_vote=user_vote)
 
         if not self.object.can_vote():
             messages.error(request,
@@ -89,6 +97,7 @@ class ResultsView(generic.DetailView):
         """
         try:
             self.object = get_object_or_404(Question, pk=kwargs["pk"])
+
         except Http404:
             messages.error(request,
                            f"Poll number {kwargs['pk']} does not exists.")
@@ -99,9 +108,9 @@ class ResultsView(generic.DetailView):
                            f"Poll {self.object} results are not "
                            f"available.")
             return redirect("polls:index")
+
         else:
-            max_votes = self.object.choice_set.aggregate(
-                max_votes=Max('votes'))['max_votes'] or 0
+            max_votes = 30
             context = {
                 "question": self.object,
                 "max_votes": max_votes,
@@ -109,6 +118,7 @@ class ResultsView(generic.DetailView):
             return render(request, self.template_name, context)
 
 
+@login_required
 def vote(request, question_id):
     """Process a vote on the detail view.
 
@@ -117,21 +127,46 @@ def vote(request, question_id):
     :return: Redirects to results page or detail page with error message
     """
     question = get_object_or_404(Question, pk=question_id)
+    ip = get_client_ip(request)
+    this_user = request.user
+    logger = logging.getLogger("polls")
+    logger.info(f"{this_user} logged in from {ip}")
 
     if not question.can_vote():
         messages.error(request, f"Poll number {question.id} "
                                 f"is not available to vote")
+        logger.warning(f"{this_user} failed to vote for {question}"
+                          f" from {ip}")
         return redirect("polls:index")
 
     try:
         selected_choice = question.choice_set.get(pk=request.POST["choice"])
     except (KeyError, Choice.DoesNotExist):
+        logger.warning(f"{this_user} failed to vote for {question}"
+                       f" from {ip}")
         return render(request, "polls/detail.html", {
             "question": question,
             "error_message": "Please select a choice!",
         })
+
+    try:
+        curr_vote = Vote.objects.get(user=this_user, choice__question=question)
+        curr_vote.choice = selected_choice
+    except Vote.DoesNotExist:
+        curr_vote = Vote(user=this_user, choice=selected_choice)
+    curr_vote.save()
+
+    logger.info(f"{this_user} voted for {question} from {ip}")
+    messages.success(request, f"Your vote for {question} has been recorded.")
+    return HttpResponseRedirect(reverse("polls:results",
+                                        args=(question.id,)))
+
+
+def get_client_ip(request):
+    """Get the visitor’s IP address using request headers."""
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
     else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        return HttpResponseRedirect(reverse("polls:results",
-                                            args=(question.id,)))
+        ip = request.META.get('REMOTE_ADDR')
+    return ip

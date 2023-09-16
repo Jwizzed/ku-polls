@@ -14,7 +14,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 '#4BC0C0',
                 '#FF9F40',
                 '#FFCD56',
-                '#C45850'
+                '#C45850',
+                '#8E44AD',
+                '#3498DB',
+                '#E74C3C',
+                '#2ECC71',
+                '#F39C12',
+                '#7F8C8D'
             ]
         }]
     };

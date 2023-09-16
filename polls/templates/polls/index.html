@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-
+{% extends 'polls/nav.html' %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Problems</title>
-    {% load static %}
     <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 </head>
+{% block content %}
 <body>
     <div class="Problems">
         <div class="container">
             <h1 class="ku-polls">KU polls</h1>
             {% if messages %}
-            <ul class="error_messages">
-                {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
+            <ul class="messages_container">
+            {% for message in messages %}
+                {% if message.tags == "success" %}
+                    <li class="success_message">{{ message }}</li>
+                {% elif message.tags == "error" %}
+                    <li class="error_message">{{ message }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
             {% endif %}
             <div class="flex mt-4 border border-gray-500 p-4 scrollable-content">
 
@@ -28,16 +32,15 @@
                           <div class="card">
                             <div class="card-content">
                             <h2 class="card-title">{{ question.question_text }}</h2>
-                                {% if question.is_able_to_vote %}
+                                {% if question.can_vote %}
                                     <p>Status: 🗳️</p>
                                 {% else %}
                                     <p>Status: 🚫</p>
                                 {% endif %}
-
                                 <p>Total Vote:<em class="total-vote"> {{question.total_votes}} </em></p>
-                            <div class="card-actions">
-                             <a href="{% url 'polls:detail' question.id %}" class="view-button">Vote</a>
-                             <a href="{% url 'polls:results' question.id %}" class="view-button">View</a>
+                                <div class="card-actions">
+                                 <a href="{% url 'polls:detail' question.id %}" class="view-button">Vote</a>
+                                 <a href="{% url 'polls:results' question.id %}" class="view-button">View</a>
                               </div>
                             </div>
                           </div>
@@ -50,4 +53,5 @@
         </div>
     </div>
 </body>
+{% endblock %}
 </html>

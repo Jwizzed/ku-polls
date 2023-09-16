@@ -113,6 +113,9 @@ h1 {
  text-align: center;
     margin-top: 5px;
 }
+.detail-back:hover{
+    background: rgba(0, 51, 102, 1);
+}
 
 .extended{
     width: 100px;
@@ -221,16 +224,24 @@ em.total-vote{
     color: #333;
 }
 
-.error_messages {
-    background-color: #ffe0e0;
+.messages_container {
     padding: 10px;
-    border: 1px solid #ffcccc;
+    border: 1px solid #ccc;
     border-radius: 5px;
     list-style-type: none;
 }
 
 .error_messages li {
     color: #cc0000;
+    margin-bottom: 5px;
+}
+.success_message li {
+    color: #008800;
+    margin-bottom: 5px;
+}
+
+ul.messages_container li.success_message {
+    color: #008800;
     margin-bottom: 5px;
 }
 
@@ -358,4 +369,116 @@ em.total-vote{
     bottom: 0;
     width: 100%;
     height: 100%;
+}
+
+/* nav */
+.topnav {
+    background: rgba(0, 51, 102, 1);
+    overflow: hidden;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.topnav a:hover {
+    background: rgba(0, 51, 102, 1);
+}
+
+.topnav a.active {
+    background: rgba(0, 51, 102, 1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.topnav a.active:hover {
+    background-color: black;
+}
+
+.topnav p {
+    float: right;
+    color: white;
+    padding: 14px 16px;
+    margin: 0;
+    font-weight: bold;
+}
+
+
+.login-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 8px 8px 15px #aaa, -8px -8px 15px #fff;
+    width: 350px;
+    text-align: center;
+    margin: 5em auto;
+}
+
+.login-title {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group p {
+    color: red;
+    font-size: 0.8rem;
+}
+
+.custom-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: bold;
+}
+
+.custom-form input[type="text"], .custom-form input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 4px 4px 6px #aaa, -4px -4px 6px #fff;
+    outline: none;
+}
+
+.custom-form .custom-button {
+    background-color: #007BFF;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 4px 4px 6px #aaa, -4px -4px 6px #fff;
+    width: 100%;
+    text-decoration: None;
+}
+
+.custom-form .custom-button:hover {
+    background-color: #0056b3;
+}
+
+.help-text {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-left: 19em;
+    width: 30em;
+    background-color: #0056b3;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
 }
