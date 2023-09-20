@@ -58,8 +58,8 @@
    ```
 8. Load fixture data
    ```
-   python manage.py loaddata polls.json 
-   python manage.py loaddata users.json
+   python manage.py loaddata data/polls.json 
+   python manage.py loaddata data/users.json
    ```
 9. Run tests
    ```

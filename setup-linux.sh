@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Step 1: Create and activate a virtual environment
-python -m venv .venv
-source .venv/bin/activate
+python -m venv venv
+source venv/bin/activate
 
 # Step 2: Install requirements
 pip install -r requirements.txt
@@ -14,8 +14,8 @@ cp sample.env .env
 python manage.py migrate
 
 # Step 5: Load fixture data
-python manage.py loaddata polls.json
-python manage.py loaddata users.json
+python manage.py loaddata data/polls.json
+python manage.py loaddata data/users.json
 
 # Step 6: Run tests
 python manage.py test
