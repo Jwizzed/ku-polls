@@ -12,8 +12,8 @@ copy sample.env .env
 python manage.py migrate
 
 :: Step 5: Load fixture data
-python manage.py loaddata polls.json
-python manage.py loaddata users.json
+python manage.py loaddata data/polls.json
+python manage.py loaddata data/users.json
 
 :: Step 6: Run tests
 python manage.py test
