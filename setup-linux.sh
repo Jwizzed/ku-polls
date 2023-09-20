@@ -4,21 +4,21 @@
 python -m venv .venv
 source .venv/bin/activate
 
-# Step 2: Create .env file
+# Step 2: Install requirements
+pip install -r requirements.txt
+
+# Step 3: Create .env file
 cp sample.env .env
 
-# Step 3: Run migrations
+# Step 4: Run migrations
 python manage.py migrate
 
-# Step 4: Load fixture data
+# Step 5: Load fixture data
 python manage.py loaddata polls.json
 python manage.py loaddata users.json
 
-# Step 5: Run tests
+# Step 6: Run tests
 python manage.py test
-
-# Step 6: Install requirements
-pip install -r requirements.txt
 
 # Step 7: Start development server
 python manage.py runserver

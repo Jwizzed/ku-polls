@@ -28,17 +28,21 @@
    ```
 3. Create a virtual environment
    ```
-   python -m venv .venv
+   python -m venv venv
    ```
 4. Activate the virtual environment:
    ```
    # On Linux or MacOS:
-   source .venv/bin/activate
+   source venv/bin/activate
    
    # On Windows:
-   .venv\Scripts\activate
+   venv\Scripts\activate
    ```
-5. Create a .env file by copying the contents of sample.env
+5. Install the required packages
+   ```
+   pip install -r requirements.txt
+   ```
+6. Create a .env file by copying the contents of sample.env
    
    ```
    # On Linux/MacOS:
@@ -48,23 +52,18 @@
    copy sample.env .env
    ```
    Note: After copying, make sure to edit the .env file to set any environment-specific values as needed.
-6. Run migrations
+7. Run migrations
    ```
    python manage.py migrate
    ```
-7. Load fixture data
+8. Load fixture data
    ```
-   python manage.py loaddata polls.json # Included vote
-   python manage.py loaddata polls_no_vote.json # Not include vote
+   python manage.py loaddata polls.json 
    python manage.py loaddata users.json
    ```
-8. Run tests
+9. Run tests
    ```
    python manage.py test
-   ```
-9. Install the required packages
-   ```
-   pip install -r requirements.txt
    ```
 10. Start the Django server
    ```
