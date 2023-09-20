@@ -1,17 +1,28 @@
 #!/bin/bash
 
-# Step 1: Create a virtual environment
-python -m venv .venv
+# Step 1: Clone the repository
+git clone https://github.com/Jwizzed/ku-polls.git
+cd ku-polls
 
-# Step 2: Activate the virtual environment
+# Step 2: Create and activate a virtual environment
+python -m venv .venv
 source .venv/bin/activate
 
-# Step 3: Create a .env file by copying the contents of sample.env
+# Step 3: Create .env file
 cp sample.env .env
-echo "Note: After copying, make sure to edit the .env file to set any environment-specific values as needed."
 
-# Step 4: Install the required packages
+# Step 4: Run migrations
+python manage.py migrate
+
+# Step 5: Load fixture data
+python manage.py loaddata polls.json
+python manage.py loaddata users.json
+
+# Step 6: Run tests
+python manage.py test
+
+# Step 7: Install requirements
 pip install -r requirements.txt
 
-# Step 5: Start the Django server (This step is optional in the script, as the user might want to run the server manually)
-echo "You can now start the Django server using the command: python manage.py runserver"
+# Step 8: Start development server
+python manage.py runserver
