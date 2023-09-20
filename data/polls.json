@@ -19,15 +19,6 @@
 },
 {
   "model": "polls.question",
-  "pk": 3,
-  "fields": {
-    "question_text": "What's your favorite social media platform?",
-    "pub_date": "2023-08-31T06:54:18.282Z",
-    "end_date": null
-  }
-},
-{
-  "model": "polls.question",
   "pk": 4,
   "fields": {
     "question_text": "Which streaming service do you use the most?",
@@ -149,86 +140,6 @@
   "fields": {
     "question": 2,
     "choice_text": "Super speed"
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 14,
-  "fields": {
-    "question": 3,
-    "choice_text": "Facebook"
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 15,
-  "fields": {
-    "question": 3,
-    "choice_text": "Instagram"
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 16,
-  "fields": {
-    "question": 3,
-    "choice_text": "TikTok"
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 17,
-  "fields": {
-    "question": 3,
-    "choice_text": "Twitter"
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 18,
-  "fields": {
-    "question": 3,
-    "choice_text": "Snapchat"
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 19,
-  "fields": {
-    "question": 3,
-    "choice_text": "YouTube"
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 20,
-  "fields": {
-    "question": 3,
-    "choice_text": "Reddit"
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 21,
-  "fields": {
-    "question": 3,
-    "choice_text": "Pinterest"
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 22,
-  "fields": {
-    "question": 3,
-    "choice_text": "LinkedIn"
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 23,
-  "fields": {
-    "question": 3,
-    "choice_text": "WhatsApp"
   }
 },
 {
@@ -720,91 +631,99 @@
   }
 },
 {
-  "model": "polls.vote",
-  "pk": 1,
+  "model": "polls.choice",
+  "pk": 85,
   "fields": {
-    "choice": 79,
-    "user": 2
+    "question": 1,
+    "choice_text": "Other"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 86,
+  "fields": {
+    "question": 2,
+    "choice_text": "Other"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 88,
+  "fields": {
+    "question": 4,
+    "choice_text": "Other"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 89,
+  "fields": {
+    "question": 5,
+    "choice_text": "Other"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 90,
+  "fields": {
+    "question": 6,
+    "choice_text": "Other"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 91,
+  "fields": {
+    "question": 7,
+    "choice_text": "Other"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 92,
+  "fields": {
+    "question": 8,
+    "choice_text": "Other"
   }
 },
 {
   "model": "polls.vote",
-  "pk": 2,
+  "pk": 12,
   "fields": {
-    "choice": 51,
-    "user": 2
+    "choice": 78,
+    "user": 8
   }
 },
 {
   "model": "polls.vote",
-  "pk": 3,
+  "pk": 13,
   "fields": {
-    "choice": 27,
-    "user": 2
+    "choice": 84,
+    "user": 8
   }
 },
 {
   "model": "polls.vote",
-  "pk": 4,
+  "pk": 14,
   "fields": {
-    "choice": 18,
-    "user": 2
+    "choice": 36,
+    "user": 8
   }
 },
 {
   "model": "polls.vote",
-  "pk": 5,
+  "pk": 16,
   "fields": {
-    "choice": 83,
-    "user": 3
+    "choice": 29,
+    "user": 8
   }
 },
 {
   "model": "polls.vote",
-  "pk": 6,
+  "pk": 17,
   "fields": {
-    "choice": 40,
-    "user": 3
-  }
-},
-{
-  "model": "polls.vote",
-  "pk": 7,
-  "fields": {
-    "choice": 80,
-    "user": 4
-  }
-},
-{
-  "model": "polls.vote",
-  "pk": 8,
-  "fields": {
-    "choice": 38,
-    "user": 4
-  }
-},
-{
-  "model": "polls.vote",
-  "pk": 9,
-  "fields": {
-    "choice": 48,
-    "user": 3
-  }
-},
-{
-  "model": "polls.vote",
-  "pk": 10,
-  "fields": {
-    "choice": 28,
-    "user": 3
-  }
-},
-{
-  "model": "polls.vote",
-  "pk": 11,
-  "fields": {
-    "choice": 20,
-    "user": 3
+    "choice": 39,
+    "user": 10
   }
 }
 ]
