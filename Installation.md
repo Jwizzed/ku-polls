@@ -36,7 +36,7 @@
    source venv/bin/activate
    
    # On Windows:
-   venv\Scripts\activate
+   call venv\Scripts\activate
    ```
 5. Install the required packages
    ```
