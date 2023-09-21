@@ -1,6 +1,6 @@
 :: Step 1: Create and activate virtual environment
 python -m venv venv
-venv\Scripts\activate
+call venv\Scripts\activate
 
 :: Step 2: Install requirements
 pip install -r requirements.txt
