@@ -12,7 +12,7 @@
    chmod +x setup-linux.sh
    ./setup-linux.sh
    ```
-   For Windows:
+   For Windows (If it doesn't work, try `Manual Installation`):
    ```
    setup-win.bat
    ```

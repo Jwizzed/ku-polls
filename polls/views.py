@@ -143,10 +143,8 @@ def vote(request, question_id):
     except (KeyError, Choice.DoesNotExist):
         logger.warning(f"{this_user} failed to vote for {question}"
                        f" from {ip}")
-        return render(request, "polls/detail.html", {
-            "question": question,
-            "error_message": "Please select a choice!",
-        })
+        messages.error(request, "Please select a choice!")
+        return redirect("polls:detail", pk=question_id)
 
     try:
         curr_vote = Vote.objects.get(user=this_user, choice__question=question)
