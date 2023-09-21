@@ -1,7 +1,7 @@
+{% extends 'polls/nav.html' %}
 {% load static %}
-
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
-
+{% block content %}
 <form action="{% url 'polls:vote' question.id %}" method="post" class="poll-form">
 
   {% csrf_token %}
@@ -12,15 +12,11 @@
         {% if messages %}
           <ul class="error_messages">
               {% for message in messages %}
-              <li> {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
               {% endfor %}
           </ul>
         {% endif %}
     </legend>
-
-    {% if error_message %}
-      <p class="error">{{ error_message }}</p>
-    {% endif %}
 
     {% for choice in question.choice_set.all %}
     <label class="poll-choice">
@@ -39,5 +35,5 @@
   <input type="submit" value="Vote" class="vote-button">
 
   <a class="detail-back" href="{% url 'polls:index' %}">Back</a>
-
+{% endblock %}
 </form>
