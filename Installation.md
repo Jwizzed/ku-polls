@@ -18,6 +18,7 @@
    ```
 
 ### Manual Installation
+_**Disclaimer**_: If python is not available, use `python3` instead of `python` in the above commands.
 1. Clone the repository
    ```
    git clone https://github.com/Jwizzed/ku-polls.git
