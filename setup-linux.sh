@@ -1,7 +1,27 @@
 #!/bin/bash
 
+# Function to find Python executable
+find_python() {
+  if command -v python3 &>/dev/null; then
+    echo "python3"
+  elif command -v python &>/dev/null; then
+    echo "python"
+  else
+    echo "No suitable Python version found. Exiting."
+    exit 1
+  fi
+}
+
 # Step 1: Create and activate a virtual environment
-python -m venv venv
+PYTHON=$(find_python)
+$PYTHON -m venv venv
+
+# Check if venv was successfully created
+if [ $? -ne 0 ]; then
+  echo "Virtual environment creation failed. Exiting."
+  exit 1
+fi
+
 source venv/bin/activate
 
 # Step 2: Install requirements
@@ -11,14 +31,14 @@ pip install -r requirements.txt
 cp sample.env .env
 
 # Step 4: Run migrations
-python manage.py migrate
+$PYTHON manage.py migrate
 
 # Step 5: Load fixture data
-python manage.py loaddata data/polls.json
-python manage.py loaddata data/users.json
+$PYTHON manage.py loaddata data/polls.json
+$PYTHON manage.py loaddata data/users.json
 
 # Step 6: Run tests
-python manage.py test
+$PYTHON manage.py test
 
 # Step 7: Start development server
-python manage.py runserver
+$PYTHON manage.py runserver
