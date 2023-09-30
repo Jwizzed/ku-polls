@@ -54,7 +54,7 @@ class DetailView(generic.DetailView):
         """
         try:
             self.object = get_object_or_404(Question, pk=kwargs["pk"])
-        except Http404:
+        except (Http404, OverflowError):
             messages.error(request,
                            f"Poll with ID {kwargs['pk']} does not exist.")
             return redirect("polls:index")
