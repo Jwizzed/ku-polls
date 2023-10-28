@@ -1,7 +1,8 @@
+"""A module that represents the Question model."""
 import datetime
-from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
+from .vote import Vote
 
 
 class Question(models.Model):
@@ -10,6 +11,7 @@ class Question(models.Model):
 
     :param models.Model: A class that represent a table in database.
     """
+
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('Date published', default=timezone.now)
     end_date = models.DateTimeField(
@@ -62,33 +64,7 @@ class Question(models.Model):
         else:
             return self.pub_date <= now
 
-
-class Choice(models.Model):
-    """
-    A class response for Choice model, also a table in database.
-
-    :param models.Model: A class that represent a table in database.
-    """
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-
-    @property
-    def votes(self):
-        """
-        Count the votes for this choice.
-
-        :return: The number of votes for this choice.
-        """
-        return self.vote_set.count()
-
-    def __str__(self):
-        """
-        :return: The choice text
-        """
-        return self.choice_text
-
-
-class Vote(models.Model):
-    """Records a Vote of a Choice by a User."""
-    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    class Meta:
+        """Meta class for Question model."""
+        db_table = "polls_question"
+        app_label = "polls"
